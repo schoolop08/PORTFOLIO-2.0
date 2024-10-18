@@ -1,0 +1,255 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+/* Dark Theme (Default) */
+:root {
+    --background: #343353;
+    --background-compliment: #41406075;
+    --primary: #F8D74C;
+    --accent-blue: #6c74e4;
+    --text: #F8F8F8;
+}
+
+/* Light Theme */
+:root.light-theme {
+    --background: #d6d0ff;
+    --background-compliment: #4963f41e;
+    --primary: #f84c6b;
+    --accent-blue: #6c74e4;
+    --text: #343353;
+}
+
+/* main styling starts */
+
+* {
+    margin: 0;
+    padding: 0;
+    color: var(--text);
+    font-family: "Poppins", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
+*::selection {
+    background-color: var(--text);
+    color: var(--background);
+}
+
+strong {
+    color: var(--primary);
+    font-weight: 600;
+    mix-blend-mode: lighten;
+}
+
+
+body,
+html {
+    width: 100%;
+    height: 100%;
+}
+
+/* background */
+
+.container {
+    width: 100%;
+    height: 100%;
+    background-color: var(--background);
+    background-image: linear-gradient(0deg, transparent 24%, var(--background-compliment) 25%, var(--background-compliment) 26%, transparent 27%, transparent 74%, var(--background-compliment) 75%, var(--background-compliment) 76%, transparent 77%, transparent),
+        linear-gradient(90deg, transparent 24%, var(--background-compliment) 25%, var(--background-compliment) 26%, transparent 27%, transparent 74%, var(--background-compliment) 75%, var(--background-compliment) 76%, transparent 77%, transparent);
+    background-size: 55px 55px;
+    transition: 0.25s;
+}
+
+/* theme switch */
+.theme {
+    bottom: 10%;
+    right: 10%;
+}
+
+.theme #checkbox {
+    display: none;
+}
+
+.theme .switch {
+    position: relative;
+    width: 40px;
+    height: 40px;
+    background-color: rgba(99, 99, 99, 0.299);
+    border-radius: 50%;
+    z-index: 1;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid rgb(126, 126, 126);
+    box-shadow: 0px 0px 3px rgb(2, 2, 2) inset;
+    transition: 2.5s;
+}
+
+.theme .switch svg {
+    width: 1.2em;
+}
+
+.theme .switch svg path {
+    fill: rgb(48, 48, 48);
+}
+
+.theme #checkbox:checked+.switch {
+    box-shadow: 0px 0px 1px var(--primary) inset,
+        0px 0px 2px var(--primary) inset, 0px 0px 10px var(--primary) inset,
+        0px 0px 40px var(--primary), 0px 0px 100px var(--primary),
+        0px 0px 5px var(--primary);
+    border: 2px solid var(--text);
+    background-color: #f8d64c70;
+}
+
+.theme #checkbox:checked+.switch svg {
+    filter: drop-shadow(0px 0px 5px var(--primary));
+}
+
+.theme #checkbox:checked+.switch svg path {
+    fill: var(--text);
+}
+
+/* Bottom navigation bar styling */
+.bottom-navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: fixed;
+    transform: translate(-50%, 0%);
+    left: 50%;
+    bottom: 25px;
+    width: 40%;
+}
+
+.nav-list {
+    width: 75%;
+    border-radius: 100px;
+    display: flex;
+    justify-content: space-around;
+    list-style-type: none;
+    margin: 0;
+    padding: 10px 0;
+    background-color: var(--text);
+    box-shadow: 0 -2px 5px var(--background);
+    transition: 0.25s;
+}
+
+/* Top Name Style */
+
+.top {
+    z-index: 999;
+    width: 100%;
+    position: fixed;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 25px;
+    font-size: 24px;
+    background-color: var(--background-compliment);
+    backdrop-filter: blur(5px);
+}
+
+.name span {
+    color: var(--primary);
+    font-weight: 700;
+}
+
+/* page styling */
+.pg {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.pg .card {
+    width: 30%;
+    height: 50%;
+    perspective: 1000px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.pg .card-inner {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    transform-style: preserve-3d;
+    transition: transform 0.999s;
+}
+
+.pg .card:hover .card-inner {
+    transform: rotateY(180deg);
+}
+
+.pg .card-front,
+.pg .card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+}
+
+.pg .card-front {
+    background: url('profile-pic.png') no-repeat center center / cover;
+    background-color: var(--primary);
+    color: #fff;
+    display: flex;
+    align-items: end;
+    /* border: 25px solid var(--primary); */
+    padding: 25px;
+    border-radius: 10px;
+    justify-content: center;
+    font-size: 24px;
+    transform: rotateY(0deg);
+}
+
+.front-intro::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 40%;
+    background-color: var(--background-compliment);
+    z-index: -1;
+}
+
+.pg .card-front .front-intro {
+    width: 100%;
+    background-blend-mode: darken;
+}
+
+.pg .card-front .front-intro .name,
+.pg .card-back .radhe {
+    font-size: 30px;
+    font-weight: 600;
+}
+
+.pg .card-front .front-intro .specs,
+.pg .card-back .intro {
+    font-size: 18px;
+    font-weight: 400;
+}
+
+.pg .card-back .wave {
+    font-size: 56px;
+}
+
+.pg .card-back {
+    background-color: var(--accent-blue);
+    height: 100%;
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    border: 25px solid var(--accent-blue);
+    border-radius: 10px;
+    /* justify-content: center; */
+    font-size: 24px;
+    transform: rotateY(180deg);
+}
