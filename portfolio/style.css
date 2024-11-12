@@ -1,0 +1,208 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+/* Dark Theme (Default) */
+:root {
+    --background: #343353;
+    --background-compliment: #41406075;
+    --primary: #F8D74C;
+    --accent-blue: #6c74e4;
+    --text: #F8F8F8;
+}
+
+/* Light Theme */
+:root.light-theme {
+    --background: #d6d0ff;
+    --background-compliment: #4963f41e;
+    --primary: #f84c6b;
+    --accent-blue: #6c74e4;
+    --text: #343353;
+}
+
+/* main styling starts */
+
+* {
+    margin: 0;
+    padding: 0;
+    color: var(--text);
+    font-family: "Poppins", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
+*::selection {
+    background-color: var(--text);
+    color: var(--background);
+}
+
+strong {
+    color: var(--primary);
+    font-weight: 600;
+}
+
+
+body,
+html {
+    width: 100%;
+    height: 100%;
+    overflow-x: hidden;
+}
+
+/* background */
+
+.pg {
+    width: 100%;
+    height: 100%;
+    background-color: var(--background);
+    background-image: linear-gradient(0deg, transparent 24%, var(--background-compliment) 25%, var(--background-compliment) 26%, transparent 27%, transparent 74%, var(--background-compliment) 75%, var(--background-compliment) 76%, transparent 77%, transparent),
+        linear-gradient(90deg, transparent 24%, var(--background-compliment) 25%, var(--background-compliment) 26%, transparent 27%, transparent 74%, var(--background-compliment) 75%, var(--background-compliment) 76%, transparent 77%, transparent);
+    background-size: 55px 55px;
+    transition: 0.25s;
+}
+
+/* theme switch */
+.theme {
+    bottom: 10%;
+    right: 10%;
+}
+
+.theme #checkbox {
+    display: none;
+}
+
+.theme .switch {
+    position: relative;
+    width: 40px;
+    height: 40px;
+    background-color: rgba(99, 99, 99, 0.299);
+    border-radius: 50%;
+    z-index: 1;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid rgb(126, 126, 126);
+    box-shadow: 0px 0px 3px rgb(2, 2, 2) inset;
+    transition: 2.5s;
+}
+
+.theme .switch svg {
+    width: 1.2em;
+}
+
+.theme .switch svg path {
+    fill: rgb(48, 48, 48);
+}
+
+.theme #checkbox:checked+.switch {
+    box-shadow: 0px 0px 1px var(--primary) inset,
+        0px 0px 2px var(--primary) inset, 0px 0px 10px var(--primary) inset,
+        0px 0px 40px var(--primary), 0px 0px 100px var(--primary),
+        0px 0px 5px var(--primary);
+    border: 2px solid var(--text);
+    background-color: #f8d64c70;
+}
+
+.theme #checkbox:checked+.switch svg {
+    filter: drop-shadow(0px 0px 5px var(--primary));
+}
+
+.theme #checkbox:checked+.switch svg path {
+    fill: var(--text);
+}
+
+/* Bottom navigation bar styling */
+.bottom-navbar {
+    z-index: 999;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: fixed;
+    transform: translate(-50%, 0%);
+    left: 50%;
+    bottom: 25px;
+    width: 40%;
+}
+
+.nav-list {
+    width: 75%;
+    border-radius: 100px;
+    display: flex;
+    justify-content: space-around;
+    list-style-type: none;
+    margin: 0;
+    padding: 10px 0;
+    background-color: var(--text);
+    box-shadow: 0 -2px 5px var(--background);
+    transition: 0.25s;
+}
+
+.name span {
+    color: var(--primary);
+    font-weight: 700;
+}
+
+/* page styling */
+.pg {
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+}
+
+/* about styling */
+.pg#about {
+    justify-content: center;
+}
+
+.pg#about .left,
+.pg#about .center,
+.pg#about .right {
+    width: 400px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* .center styling */
+
+.center img {
+    position: absolute;
+    width: 25px;
+    height: 100%;
+    object-fit: cover;
+    transition: 0.5s cubic-bezier(0.39, 0.575, 0.565, 1);
+    filter: blur(5px) sepia(1);
+}
+
+.center img:hover {
+    filter: blur(0px);
+    width: 250px;
+    transition: 0.5s cubic-bezier(0.47, 0, 0.745, 0.715);
+}
+
+.center .name {
+    position: static;
+    top: 0;
+    font-size: 50px;
+    background-color: var(--background);
+    padding: 0 25px;
+}
+
+@media (max-width: 1205px) {
+    .pg#about {
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-around;
+    }
+
+    .center img {
+        position: static;
+        width: 100%;
+        height: 200px;
+    }
+
+    .center img:hover {
+        position: static;
+        width: 100%;
+        height: 200px;
+    }
+}
