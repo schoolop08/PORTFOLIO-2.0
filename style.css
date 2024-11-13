@@ -131,3 +131,29 @@ footer p {
     text-align: center;
     font-family: monospace;
 }
+
+/* The typing effect */
+@keyframes typing {
+    from {
+      width: 0;
+    }
+    to {
+      width: 100%;
+    }
+}
+
+#top {
+    width: fit-content;
+}
+
+#small {
+    font-family: monospace;
+    overflow: hidden;
+    border-right: 0.15em solid orange;
+    white-space: nowrap;
+    letter-spacing: 0.15em;
+    animation: 
+      typing 3.5s steps(40, end),
+      blink 0.75s step-end;
+}
+  
